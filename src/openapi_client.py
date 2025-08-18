@@ -1,4 +1,4 @@
-from config import OPENAI_API_KEY
+from src.settings.config import OPENAI_API_KEY
 from openai import AsyncOpenAI, OpenAIError
 import asyncio
 
