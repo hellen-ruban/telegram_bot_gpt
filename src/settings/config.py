@@ -1,13 +1,24 @@
 from pathlib import Path
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
+load_dotenv()
+# from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
+BASE_DIR = Path(__file__).resolve().parents[1]
+RES_DIR = BASE_DIR / "resources"
 
-BASE_DIR = Path(__file__).parent.parent.parent
+IMAGES_DIR = RES_DIR / "images"
+MESSAGES_DIR = RES_DIR / "messages"
+PROMPTS_DIR = RES_DIR / "prompts"
+
+LOGS_DIR = BASE_DIR.parent / "logs"
+
+# keys
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+TG_BOT_API_KEY = os.environ["TG_BOT_API_KEY"]
 
 
-class AppConfig(BaseSettings):
+"""class AppConfig(BaseSettings):
     openai_api_key: str
     tg_bot_api_key: str
     ai_assistant_random_facts_id: str
@@ -32,9 +43,4 @@ class AppConfig(BaseSettings):
     )
 
 
-config = AppConfig()
-
-
-# keys
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
-TG_BOT_API_KEY = os.environ["TG_BOT_API_KEY"]
+config = AppConfig()"""
