@@ -15,7 +15,7 @@ async def ask_short(prompt: str) -> str:
                 {"role": "system", "content": "Відповідай українською стисло, 2–4 речення, дружнім тоном."},
                 {"role": "user", "content": prompt},
             ],
-            temperature=0.7,
+            temperature=1.2,
             # max_tokens задаємо за бажанням
         )
         return (resp.choices[0].message.content or "").strip()
@@ -44,7 +44,7 @@ async def ask_chat(messages: list[dict]) -> str:
         resp = await _client.chat.completions.create(
             model="gpt-4o-mini",
             messages=messages,
-            temperature=1.5,
+            temperature=1,
         )
         return (resp.choices[0].message.content or "").strip()
     except Exception as e:
