@@ -6,6 +6,7 @@ from src.bot.handlers.start import start
 from src.bot.handlers.random import random_fact
 from src.bot.handlers.callbacks import on_callback
 from src.bot.keyboards import CB_FINISH, CB_MORE
+from src.bot.handlers.gpt import build_gpt_conv_handler
 
 def setup_logging() -> None:
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
@@ -33,6 +34,8 @@ def register_handlers(app):
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("random", random_fact))
     app.add_handler(CallbackQueryHandler(on_callback, pattern=f"^({CB_FINISH}|{CB_MORE})$"))
+
+    app.add_handler(build_gpt_conv_handler())
 
 def run():
     setup_logging()
