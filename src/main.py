@@ -8,6 +8,7 @@ from src.bot.handlers.callbacks import on_callback
 from src.bot.keyboards import CB_FINISH, CB_MORE
 from src.bot.handlers.gpt import build_gpt_conv_handler
 from src.bot.handlers.talk import build_talk_conv_handler
+from src.bot.handlers.quiz import build_quiz_conv_handler
 
 
 def setup_logging() -> None:
@@ -39,6 +40,8 @@ def register_handlers(app):
 
     app.add_handler(build_gpt_conv_handler())
     app.add_handler(build_talk_conv_handler())
+    app.add_handler(build_quiz_conv_handler())
+
 
 def run():
     setup_logging()

@@ -57,3 +57,28 @@ def main_menu_keyboard() -> InlineKeyboardMarkup:
         [InlineKeyboardButton("Діалог з відомою особистістю", callback_data=CB_MENU_TALK)],
     ])
 
+# ===== QUIZ (нове для промпта з командами) =====
+from telegram import InlineKeyboardMarkup, InlineKeyboardButton
+
+CB_QUIZ_TOPIC_PROG     = "quiz_topic_prog"      # → відправимо GPT: quiz_prog
+CB_QUIZ_TOPIC_MATH     = "quiz_topic_math"      # → відправимо GPT: quiz_math
+CB_QUIZ_TOPIC_BIOLOGY  = "quiz_topic_biology"   # → відправимо GPT: quiz_biology
+
+CB_QUIZ_MORE   = "quiz_more"     # → відправимо GPT: quiz_more
+CB_QUIZ_CHANGE = "quiz_change"
+CB_QUIZ_END    = "quiz_end"
+
+def quiz_topics_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("Python (програмування)", callback_data=CB_QUIZ_TOPIC_PROG)],
+        [InlineKeyboardButton("Математика (теорії)",     callback_data=CB_QUIZ_TOPIC_MATH)],
+        [InlineKeyboardButton("Біологія",               callback_data=CB_QUIZ_TOPIC_BIOLOGY)],
+        [InlineKeyboardButton("Закінчити",                 callback_data=CB_QUIZ_END)],
+    ])
+
+def quiz_actions_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("Хочу ще питання", callback_data=CB_QUIZ_MORE)],
+        [InlineKeyboardButton("Змінити тему",    callback_data=CB_QUIZ_CHANGE)],
+        [InlineKeyboardButton("Закінчити",       callback_data=CB_QUIZ_END)],
+    ])
