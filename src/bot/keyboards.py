@@ -44,3 +44,16 @@ def talk_end_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("Закінчити", callback_data=CB_TALK_END)]
     ])
+
+# ===== MAIN MENU (нове) =====
+CB_MENU_RANDOM = "menu_random"
+CB_MENU_GPT    = "menu_gpt"
+CB_MENU_TALK   = "menu_talk"
+
+def main_menu_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("Випадковий факт", callback_data=CB_MENU_RANDOM)],
+        [InlineKeyboardButton("Чат з ChatGPT",   callback_data=CB_MENU_GPT)],
+        [InlineKeyboardButton("Діалог з відомою особистістю", callback_data=CB_MENU_TALK)],
+    ])
+

@@ -5,6 +5,9 @@ from telegram.ext import (
 )
 from src.settings.config import IMAGES_DIR
 from src.services.chatgpt import ask_chat  # багатоходовий GPT
+from src.bot.keyboards import gpt_keyboard, CB_GPT_RESET, CB_GPT_END, main_menu_keyboard
+from src.settings.config import MESSAGES_DIR
+
 
 # стан розмови
 GPT_CHAT = 1
@@ -75,18 +78,35 @@ async def gpt_callbacks(update: Update, context: ContextTypes.DEFAULT_TYPE) -> i
         await q.message.reply_text("Контекст очищено. Пишіть далі.", reply_markup=_kb_gpt())
         return GPT_CHAT
 
-    if q.data == CB_GPT_END:
+    """if q.data == CB_GPT_END:
         context.user_data.pop("gpt_history", None)
         await q.message.reply_text("Діалог /gpt завершено. Щоб почати знову — /gpt.")
+        return ConversationHandler.END"""
+    if q.data == CB_GPT_END:
+        # очистим историю
+        context.user_data.pop("gpt_history", None)
+        # прочтём стартовый текст и покажем ГЛАВНОЕ МЕНЮ
+        start_path = MESSAGES_DIR / "main.html"
+        start_text = start_path.read_text(encoding="utf-8") if start_path.exists() else "Головне меню:"
+        await q.message.reply_text(start_text)
         return ConversationHandler.END
 
     return GPT_CHAT
 
 
-async def gpt_end(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Альтернативне завершення через команду /endgpt (необов’язково, але хай буде)."""
+"""async def gpt_end(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    #Альтернативне завершення через команду /endgpt (необов’язково, але хай буде).
     context.user_data.pop("gpt_history", None)
     await update.message.reply_text("Діалог /gpt завершено.")
+    return ConversationHandler.END"""
+
+async def gpt_end(update, context):
+    context.user_data.pop("gpt_history", None)
+
+    start_path = MESSAGES_DIR / "main.html"
+    start_text = start_path.read_text(encoding="utf-8") if start_path.exists() else "Головне меню:"
+    await update.message.reply_text(start_text, reply_markup=main_menu_keyboard())
+
     return ConversationHandler.END
 
 
