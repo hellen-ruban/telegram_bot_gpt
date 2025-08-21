@@ -8,3 +8,39 @@ def random_keyboard() -> InlineKeyboardMarkup:
         [InlineKeyboardButton("Хочу ще факт", callback_data=CB_MORE)],
         [InlineKeyboardButton("Закінчити", callback_data=CB_FINISH)],
     ])
+
+# ----- GPT -----
+CB_GPT_RESET = "gpt_reset"
+CB_GPT_END   = "gpt_end"
+
+def gpt_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("Очистити контекст", callback_data=CB_GPT_RESET)],
+        [InlineKeyboardButton("Завершити діалог",  callback_data=CB_GPT_END)],
+    ])
+
+# ===== TALK (нове) =====
+# Кнопки вибору особистості
+CB_TALK_SEL_COBAIN    = "talk_cobain"
+CB_TALK_SEL_HAWKING   = "talk_hawking"
+CB_TALK_SEL_NIETZSCHE = "talk_nietzsche"
+CB_TALK_SEL_QUEEN     = "talk_queen"
+CB_TALK_SEL_TOLKIEN   = "talk_tolkien"
+
+# Кнопка завершення саме для режиму talk
+CB_TALK_END = "talk_end"
+
+def talk_menu_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("Курт Кобейн",        callback_data=CB_TALK_SEL_COBAIN)],
+        [InlineKeyboardButton("Стівен Гокінг",      callback_data=CB_TALK_SEL_HAWKING)],
+        [InlineKeyboardButton("Фрідріх Ніцше",      callback_data=CB_TALK_SEL_NIETZSCHE)],
+        [InlineKeyboardButton("Королева Елизавета ІІ",    callback_data=CB_TALK_SEL_QUEEN)],
+        [InlineKeyboardButton("Дж. Р. Р. Толкін",   callback_data=CB_TALK_SEL_TOLKIEN)],
+        [InlineKeyboardButton("Закінчити",          callback_data=CB_TALK_END)],
+    ])
+
+def talk_end_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([
+        [InlineKeyboardButton("Закінчити", callback_data=CB_TALK_END)]
+    ])
