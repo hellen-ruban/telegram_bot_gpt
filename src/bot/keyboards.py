@@ -60,7 +60,7 @@ def main_menu_keyboard() -> InlineKeyboardMarkup:
 # ===== QUIZ (нове для промпта з командами) =====
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
-CB_QUIZ_TOPIC_PROG     = "quiz_topic_prog"      # → відправимо GPT: quiz_prog
+CB_QUIZ_TOPIC_HISTORY     = "quiz_topic_history"      # → відправимо GPT: quiz_history
 CB_QUIZ_TOPIC_MATH     = "quiz_topic_math"      # → відправимо GPT: quiz_math
 CB_QUIZ_TOPIC_BIOLOGY  = "quiz_topic_biology"   # → відправимо GPT: quiz_biology
 
@@ -70,8 +70,8 @@ CB_QUIZ_END    = "quiz_end"
 
 def quiz_topics_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("Python (програмування)", callback_data=CB_QUIZ_TOPIC_PROG)],
-        [InlineKeyboardButton("Математика (теорії)",     callback_data=CB_QUIZ_TOPIC_MATH)],
+        [InlineKeyboardButton("Всесвітня Історія", callback_data=CB_QUIZ_TOPIC_HISTORY)],
+        [InlineKeyboardButton("Математика",     callback_data=CB_QUIZ_TOPIC_MATH)],
         [InlineKeyboardButton("Біологія",               callback_data=CB_QUIZ_TOPIC_BIOLOGY)],
         [InlineKeyboardButton("Закінчити",                 callback_data=CB_QUIZ_END)],
     ])
