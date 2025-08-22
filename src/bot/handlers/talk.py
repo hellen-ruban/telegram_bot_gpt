@@ -19,6 +19,15 @@ TALK_CHAT   = 31
 # Картинка для старту режиму /talk
 TALK_IMG = IMAGES_DIR / "talk.jpg"
 
+# Картинки для кожної особистості
+PERSONA_IMAGES = {
+    "cobain":    IMAGES_DIR / "talk_cobain.jpg",
+    "hawking":   IMAGES_DIR / "talk_hawking.jpg",
+    "nietzsche": IMAGES_DIR / "talk_nietzsche.jpg",
+    "queen":     IMAGES_DIR / "talk_queen.jpg",
+    "tolkien":   IMAGES_DIR / "talk_tolkien.jpg",
+}
+
 # Людські назви персонажів
 PERSONA_TITLES = {
     "cobain":    "Курт Кобейн",
@@ -99,7 +108,19 @@ async def talk_choose(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int
     prompt = _load_persona_prompt(key)
     context.user_data["talk_history"] = [{"role": "system", "content": prompt}]
 
-    await q.message.reply_text(f"Спілкуємось як {PERSONA_TITLES[key]}. Напишіть перше повідомлення.")
+# NEW: надсилаємо аватарку обраної особистості + підпис
+    img_path = PERSONA_IMAGES.get(key)
+    title = PERSONA_TITLES.get(key, "Відома особистість")
+    if img_path and img_path.exists():
+        with img_path.open("rb") as f:
+            await q.message.reply_photo(
+                photo=InputFile(f),
+                caption=f"Спілкуємось як {title}. Напишіть перше повідомлення."
+            )
+    else:
+        # запасний варіант, якщо зображення відсутнє
+        await q.message.reply_text(f"Спілкуємось як {title}. Напишіть перше повідомлення.")
+
     return TALK_CHAT
 
 async def talk_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:

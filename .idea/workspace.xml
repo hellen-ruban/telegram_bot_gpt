@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10bef05f-c3c6-4838-ae20-05005dd647e0" name="Changes" comment="fixed task №2 - edd menu in the end after GPT">
-      <change afterPath="$PROJECT_DIR$/src/bot/handlers/quiz.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bot/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+    <list default="true" id="10bef05f-c3c6-4838-ae20-05005dd647e0" name="Changes" comment="fixed - add prompts files">
+      <change beforePath="$PROJECT_DIR$/src/bot/handlers/talk.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bot/handlers/talk.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +148,23 @@
       <option name="project" value="LOCAL" />
       <updated>1755797878232</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feature: added task №4 - quiz">
+      <option name="closed" value="true" />
+      <created>1755801055955</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1755801055955</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fixed - add prompts files">
+      <option name="closed" value="true" />
+      <created>1755801373467</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1755801373467</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +185,9 @@
     <MESSAGE value="fixed task №2 -  temperature=1.2" />
     <MESSAGE value="feature: added task №3 - talk" />
     <MESSAGE value="fixed task №2 - edd menu in the end after GPT" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed task №2 - edd menu in the end after GPT" />
+    <MESSAGE value="feature: added task №4 - quiz" />
+    <MESSAGE value="fixed - add prompts files" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed - add prompts files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
